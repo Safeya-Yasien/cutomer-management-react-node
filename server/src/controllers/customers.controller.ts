@@ -1,4 +1,4 @@
-import { asyncWrapProviders } from "async_hooks";
+import mongoose from "mongoose";
 import Customer from "../models/customer.model";
 
 const getCustomers = async (req: any, res: any) => {
@@ -34,7 +34,20 @@ const addCustomer = async (req: any, res: any) => {
 const getCustomerById = async (req: any, res: any) => {
   try {
     const { id } = req.params;
+
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+      return res.status(400).json({
+        msg: "Invalid ID format provided.",
+        success: false,
+      });
+    }
+
     const customer = await Customer.findById(id, { __v: 0 });
+    if (!customer) {
+      res.status(404).json({ msg: "customer not found", success: false });
+      return;
+    }
+
     res.status(200).json({ msg: "success", data: customer, success: true });
   } catch (err) {
     res.status(500).json({ msg: "error", data: err, success: false });
@@ -70,7 +83,7 @@ const updateCustomer = async (req: any, res: any) => {
 const deleteCustomer = async (req: any, res: any) => {
   try {
     const { id } = req.params;
-    await Customer.findOneAndDelete(id);
+    await Customer.findByIdAndDelete(id);
     res.status(200).json({ msg: "success", data: null, success: true });
   } catch (err) {
     res.status(500).json({ msg: "error", data: err, success: false });
