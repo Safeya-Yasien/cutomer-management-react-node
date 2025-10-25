@@ -19,6 +19,7 @@ const addCustomer = async (req: any, res: any) => {
       phone: req.body.phone,
       country: req.body.country,
       gender: req.body.gender,
+      age: req.body.age,
     });
 
     await newCustomer.save();
@@ -27,6 +28,16 @@ const addCustomer = async (req: any, res: any) => {
   } catch (err) {
     res.status(500).json({ msg: "error", data: err, success: false });
     console.log(err);
+  }
+};
+
+const getCustomerById = async (req: any, res: any) => {
+  try {
+    const { id } = req.params;
+    const customer = await Customer.findById(id, { __v: 0 });
+    res.status(200).json({ msg: "success", data: customer, success: true });
+  } catch (err) {
+    res.status(500).json({ msg: "error", data: err, success: false });
   }
 };
 
@@ -43,6 +54,7 @@ const updateCustomer = async (req: any, res: any) => {
         phone: req.body.phone,
         country: req.body.country,
         gender: req.body.gender,
+        age: req.body.age,
       },
       { new: true }
     );
@@ -78,6 +90,7 @@ export {
   getCustomers,
   addCustomer,
   updateCustomer,
+  getCustomerById,
   deleteCustomer,
   deleteAllCustomers,
 };
