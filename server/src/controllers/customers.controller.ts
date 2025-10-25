@@ -1,3 +1,4 @@
+import { asyncWrapProviders } from "async_hooks";
 import Customer from "../models/customer.model";
 
 const getCustomers = async (req: any, res: any) => {
@@ -8,6 +9,7 @@ const getCustomers = async (req: any, res: any) => {
     res.status(500).send(err);
   }
 };
+
 const addCustomer = async (req: any, res: any) => {
   try {
     const newCustomer = new Customer({
@@ -27,14 +29,49 @@ const addCustomer = async (req: any, res: any) => {
     console.log(err);
   }
 };
-const updateCustomer = (req: any, res: any) => {
-  res.send("Hello World!");
+
+const updateCustomer = async (req: any, res: any) => {
+  try {
+    const { id } = req.params;
+
+    const updatedCustomer = await Customer.findByIdAndUpdate(
+      id,
+      {
+        firstName: req.body.firstName,
+        lastName: req.body.lastName,
+        email: req.body.email,
+        phone: req.body.phone,
+        country: req.body.country,
+        gender: req.body.gender,
+      },
+      { new: true }
+    );
+
+    res
+      .status(200)
+      .json({ msg: "success", data: updatedCustomer, success: true });
+  } catch (err) {
+    res.status(500).json({ msg: "error", data: err, success: false });
+  }
 };
-const deleteCustomer = (req: any, res: any) => {
-  res.send("Hello World!");
+
+const deleteCustomer = async (req: any, res: any) => {
+  try {
+    const { id } = req.params;
+    await Customer.findOneAndDelete(id);
+    res.status(200).json({ msg: "success", data: null, success: true });
+  } catch (err) {
+    res.status(500).json({ msg: "error", data: err, success: false });
+  }
 };
-const deleteAllCustomers = (req: any, res: any) => {
-  res.send("Hello World!");
+
+const deleteAllCustomers = async (req: any, res: any) => {
+  try {
+    await Customer.deleteMany({});
+    res.status(200).json({ msg: "success", data: null, success: true });
+  } catch (err) {
+    res.status(500).json({ msg: "error", data: err, success: false });
+  }
 };
 
 export {

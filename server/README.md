@@ -13,4 +13,5 @@
 
 # why unique email and phone not work
 
--
+- it's only conflict from database not from the code
+  which i deleted all customers then restart the server and add a new customer with the same email and phone number it will work
