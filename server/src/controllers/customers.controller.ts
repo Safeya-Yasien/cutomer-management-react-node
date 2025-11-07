@@ -99,6 +99,32 @@ const deleteAllCustomers = async (req: any, res: any) => {
   }
 };
 
+const searchCustomers = async (req: any, res: any) => {
+  try {
+    const { search: searchTerm } = req.query;
+
+    if (!searchTerm) {
+      return res.status(400).json({
+        msg: "No search term provided.",
+        success: false,
+      });
+    }
+
+    const customers = await Customer.find({
+      $or: [
+        { firstName: { $regex: `${searchTerm}`, $options: "i" } },
+        { lastName: { $regex: `${searchTerm}`, $options: "i" } },
+        { email: { $regex: `${searchTerm}`, $options: "i" } },
+        { country: { $regex: `${searchTerm}`, $options: "i" } },
+      ],
+    });
+
+    res.status(200).json({ msg: "success", data: customers, success: true });
+  } catch (err) {
+    res.status(500).json({ msg: "error", data: err, success: false });
+  }
+};
+
 export {
   getCustomers,
   addCustomer,
@@ -106,4 +132,5 @@ export {
   getCustomerById,
   deleteCustomer,
   deleteAllCustomers,
+  searchCustomers,
 };

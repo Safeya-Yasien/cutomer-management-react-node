@@ -52,4 +52,13 @@ the error was in access point (access router) not the main router so i changed t
 - then choose the dns server
 - then add the dns server address
 - i added 8.8.8.8 and 1.1.1.1
-- restart the computer
+- delete the dns server address cache
+- restart the server
+- you may need to restart the computer
+
+# how to search customers by multiple fields
+
+# how to solve this error any why appears <$regex has to be a string>
+
+- this error appears in searchCustomers function when i use $regex
+- so the solution is to easy make value or regex string even if it's a dynamic value or number you can use `${value}`
