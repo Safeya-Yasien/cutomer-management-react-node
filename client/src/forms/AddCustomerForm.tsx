@@ -74,9 +74,21 @@ const AddCustomerForm = ({ mode, customerId }: ICustomerFormProps) => {
       toast.error(error.message);
     },
   });
-  const onSubmit = async (data) => {
+  const onSubmit = async (data: ICustomerForm) => {
     mutation.mutate(data);
   };
+
+  if (mode === "edit" && isPending) {
+    return <p className="text-gray-400">Loading customer data...</p>;
+  }
+
+  if (mode === "edit" && error) {
+    return (
+      <p className="text-red-500">
+        Failed to load customer info: {(error as Error).message}
+      </p>
+    );
+  }
 
   return (
     <form className="grid grid-cols-2 gap-6" onSubmit={handleSubmit(onSubmit)}>

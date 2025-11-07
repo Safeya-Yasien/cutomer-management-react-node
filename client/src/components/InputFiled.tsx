@@ -28,8 +28,8 @@ const InputFiled = ({
         className={`w-full px-4 py-2 rounded-md bg-[#1C2024] text-white border border-gray-600 focus:outline-none focus:border-blue-500
           ${disabled ? "cursor-not-allowed bg-gray-700" : ""}`}
         placeholder={placeholder}
-        {...register(name)}
         disabled={disabled}
+        {...register(name, type === "number" ? { valueAsNumber: true } : {})}
       />
       {error && <p className="text-red-500">{error.message}</p>}
     </div>
