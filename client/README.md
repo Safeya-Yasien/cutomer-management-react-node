@@ -74,27 +74,15 @@ export default defineConfig([
 
 # Next Steps
 
-- build main layout with tailwind ✅
-  - add sidebar ✅
-    - handle active link ✅
-    - handle h1 name
-    - enhance sidebar ✅
-    -
-  - add search bar ✅
-    - add search functions
-- home page
-  - add customers table ✅
-    - add pagination
-    - display real data ✅
-    - add actions functions ✅
-- build add customers form ✅
-
-  - add form ✅
-  - add validation ✅
-  - add submit function ✅
-
-- install nodejs, express, mongodb, mongoose, dotenv,
--
+- handle place of add customer button margin top
+- add delete all customers button in home page
+- handle h1 name
+- add pagination
+- add project name
+- enhance search logic
+- enhance front structure and separate the logic into different files
+- add auth
+- deploy
 
 # why i install react query or tanstack query
 
@@ -161,18 +149,6 @@ export default defineConfig([
 - when you make search dynamic or auto when the user enter the search term
 - when you make search dynamic and you need to wait for the user to stop typing
 - but i remove useDebounce function because i make only the results appear when the user click on submit or search button
-
-# add logic to actions
-
-- add view action ✔️
-- add delete action ✔️
-- add edit action ✔️
-- ## add edit action in customer details page
-- add customer page logic ✔️
-  - add customer added success toast ✔️
-  - handle place of add customer button margin top
-- add delete all customers button in home page
-- add search logic
 
 # What i used for the first time
 
