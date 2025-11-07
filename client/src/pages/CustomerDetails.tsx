@@ -35,7 +35,6 @@ const CustomerDetailsPage = () => {
     );
 
   const customer = response.data;
-  console.log("customer id", customer.id);
 
   return (
     <div className="min-h-screen bg-[#1C1F24] text-white p-8">

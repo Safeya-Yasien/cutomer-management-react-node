@@ -27,7 +27,6 @@ const addCustomer = async (req: any, res: any) => {
     res.status(201).json({ msg: "success", data: newCustomer, success: true });
   } catch (err) {
     res.status(500).json({ msg: "error", data: err, success: false });
-    console.log(err);
   }
 };
 
