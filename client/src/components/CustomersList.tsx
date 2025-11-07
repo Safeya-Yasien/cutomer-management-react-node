@@ -2,12 +2,17 @@ import { Eye } from "lucide-react";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import type { ICustomer } from "@/types/customer.types";
 import { useNavigate } from "react-router";
+import useSearchQuery from "@/hooks/useSearchQuery";
 
 const apiURL = `${import.meta.env.VITE_API_URL}/customers`;
 
 const CustomersList = () => {
   const queryClient = useQueryClient();
   const navigate = useNavigate();
+
+  const { data: filteredCustomers } = useSearchQuery();
+
+  console.log("filteredCustomers", filteredCustomers);
 
   const {
     isPending,

@@ -126,6 +126,36 @@ export default defineConfig([
 
 # how to convert mongo timestamp to last update such as "a few seconds ago"
 
+# how to add search functionality in customers page
+
+- i use react context to share the searchBar state to display the result of search in component list which in outlet
+
+# why i use react context
+
+- because searchBar component which contain form and input its' separate component
+  - MainlLayout contain header
+    - Header - SearchBar
+      so i use react context to share the searchBar state to display the result of search in component list which in outlet
+      so i use context to save the search term and write also search function inside context to use it in other component to get the customers which match the search term
+
+# how i integrate with submit form in search bar and fetch data in useSearchQuery
+
+- by using should Search which we will make it true when the user submit the form
+- then we will use useSearchQuery to fetch the data
+- after fetch data we wil set the searchTerm to empty string and set the shouldSearch to false to stop search
+- then we have filtered customers then display them in Customer List using useSearchQuery
+
+# error when using onSuccess function in useSearchQuery
+
+- i found that in v5 they removed the onSuccess function from useQuery so i need to use meta to handle the success
+- all what you need to use meta:{onSuccess:()=>{}} instead of onSuccess:()=>{} directly
+
+# how to handle search when the user enter nay char the function works
+
+- useDebounce function to debounce the search function
+- we will wait about 500 ms to search
+- i use https://usehooks.com/usedebounce library to handle the debounce
+
 # add logic to actions
 
 - add view action ✔️
@@ -151,3 +181,20 @@ export default defineConfig([
 - how to integrate react with nodejs and express
 -
 
+# Flow
+
+## Search
+
+1. User enters search term
+2. User clicks search button
+3. Search function is called
+4. Search function is debounced
+5. Search function is called
+6. the search include [firstName, lastName, email, country]
+7. display customers which match the search term
+
+## Customers List
+
+1. Customers List component is rendered
+2. Click on view button
+3. redirect
