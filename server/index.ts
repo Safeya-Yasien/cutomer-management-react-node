@@ -15,15 +15,16 @@ const corsOptions = {
 const app = express();
 app.use(express.json());
 app.use(cors(corsOptions));
-const _dirname = path.resolve();
+// const _dirname = path.resolve();
 
 app.use("/api/customers", customerRoutes);
 
+const CLIENT_DIST_PATH = path.join(__dirname, "../client/dist");
 // app.use(express.static(path.join(_dirname, "../client/dist")));
-app.use(express.static(path.join(_dirname, "/client/dist")));
+app.use(express.static(CLIENT_DIST_PATH));
 app.get("{*splat}", (_, res) => {
   // res.sendFile(path.resolve(_dirname, "client", "dist", "index.html"));
-  res.sendFile(path.resolve(__dirname, "../client/dist", "index.html"));
+  res.sendFile(path.join(CLIENT_DIST_PATH, "index.html"));
 });
 
 // const port = process.env.PORT || 3000;
