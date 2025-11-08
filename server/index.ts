@@ -19,12 +19,15 @@ const _dirname = path.resolve();
 
 app.use("/api/customers", customerRoutes);
 
+// app.use(express.static(path.join(_dirname, "../client/dist")));
 app.use(express.static(path.join(_dirname, "/client/dist")));
 app.get("{*splat}", (_, res) => {
-  res.sendFile(path.resolve(_dirname, "client", "dist", "index.html"));
+  // res.sendFile(path.resolve(_dirname, "client", "dist", "index.html"));
+  res.sendFile(path.resolve(__dirname, "../client/dist", "index.html"));
 });
 
-const port = process.env.PORT || 3000;
-app.listen(port, () => {
-  console.log(`http://localhost:${port}`);
-});
+// const port = process.env.PORT || 3000;
+// app.listen(port, () => {
+//   console.log(`http://localhost:${port}`);
+// });
+export default app;
