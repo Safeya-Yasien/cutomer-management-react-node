@@ -20,7 +20,7 @@
     {
       "src": "/static/(.*)",
       "headers": { "cache-control": "s-maxage=31536000, immutable" },
-      "dest": "client/static/$1"
+      "dest": "client/dist/$1"
     },
     { "src": "/favicon.ico", "dest": "client/favicon.ico" },
     {
