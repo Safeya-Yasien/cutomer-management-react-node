@@ -1,8 +1,8 @@
 import "dotenv/config";
 import express from "express";
-import customerRoutes from "./src/routes/customers.route";
+import customerRoutes from "../src/routes/customers.route";
 import cors from "cors";
-import connectDB from "./connectDB";
+import connectDB from "../connectDB";
 import path from "path";
 
 connectDB();
