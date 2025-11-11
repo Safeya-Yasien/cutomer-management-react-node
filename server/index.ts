@@ -11,6 +11,7 @@ connectDB(mongoURL);
 
 const allowedOrigins = [
   "http://localhost:5173",
+  "https://cutomer-management-react-node.vercel.app",
   "https://cutomer-management-react-node-prm5.vercel.app",
 ];
 const corsOptions = {
