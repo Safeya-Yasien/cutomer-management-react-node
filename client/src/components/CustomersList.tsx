@@ -19,8 +19,17 @@ const CustomersList = () => {
   } = useQuery({
     queryKey: ["customers"],
     queryFn: async () => {
-      const response = await fetch(`${BASE_URL}/customers`);
-      return await response.json();
+      try {
+        const response = await fetch(`${BASE_URL}/customers`);
+
+        if (!response.ok) {
+          throw new Error(`Server responded with ${response.status}`);
+        }
+        return await response.json();
+      } catch (err) {
+        console.error("Fetch customers failed:", err);
+        throw err;
+      }
     },
   });
 
