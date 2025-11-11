@@ -5,7 +5,10 @@ import cors from "cors";
 import connectDB from "./connectDB";
 import path from "path";
 
-connectDB();
+const mongoURL =
+  process.env.MONGODB_URI || "mongodb://localhost:27017/customers";
+
+connectDB(mongoURL);
 
 const allowedOrigins = [
   "http://localhost:5173",
