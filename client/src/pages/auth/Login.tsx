@@ -25,7 +25,7 @@ const Login: React.FC = () => {
         Welcome Back
       </h1>
 
-      <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+      <form onSubmit={handleSubmit(onSubmit)} className="space-y-8">
         <InputField
           icon={Mail}
           placeholder="Email"

@@ -28,7 +28,11 @@ const InputField: React.FC<InputFieldProps> = ({
         error ? "border-red-500" : "border-white/20"
       }`}
     />
-    {error && <p className="text-red-400 text-sm mt-1">{error}</p>}
+    {error && (
+      <span className="absolute left-0 bottom-[-1.25rem] text-red-400 text-sm">
+        {error}
+      </span>
+    )}
   </div>
 );
 
