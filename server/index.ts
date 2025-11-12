@@ -1,7 +1,8 @@
 import "dotenv/config";
+import cors from "cors";
 import express from "express";
 import customerRoutes from "./src/routes/customers.route";
-import cors from "cors";
+import userRoutes from "./src/routes/users.route";
 import connectDB from "./connectDB";
 
 const mongoURL =
@@ -24,6 +25,7 @@ app.use(express.json());
 app.use(cors(corsOptions));
 
 app.use("/api/customers", customerRoutes);
+app.use("/api/users", userRoutes);
 
 const port = process.env.PORT || 3000;
 app.listen(port, () => {

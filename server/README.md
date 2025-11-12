@@ -64,3 +64,9 @@ the error was in access point (access router) not the main router so i changed t
 
 - this error appears in searchCustomers function when i use $regex
 - so the solution is to easy make value or regex string even if it's a dynamic value or number you can use `${value}`
+
+# how to generate a secrete key using node
+
+1.  first go to terminal or nodejs command prompt
+2.  type node to enter node
+3.  type require("crypto").randomBytes(64).toString("hex") to generate a random string
