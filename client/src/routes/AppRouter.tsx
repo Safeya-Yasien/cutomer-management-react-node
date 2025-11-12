@@ -1,8 +1,11 @@
 import { createBrowserRouter, RouterProvider } from "react-router";
-import MainLayout from "@layouts/MainLayout";
+import MainLayout from "@/layouts/MainLayout/MainLayout";
 import Home from "@/pages/Home";
 import CustomerDetailsPage from "@/pages/CustomerDetails";
 import AddCustomerPage from "@/pages/AddCustomer";
+import Login from "@/pages/auth/Login";
+import Signup from "@/pages/auth/Signup";
+import AuthLayout from "@/layouts/AuthLayout/AuthLayout";
 
 const router = createBrowserRouter([
   {
@@ -24,6 +27,20 @@ const router = createBrowserRouter([
       {
         path: "customers/:id",
         element: <CustomerDetailsPage />,
+      },
+    ],
+  },
+  {
+    path: "/auth",
+    element: <AuthLayout />,
+    children: [
+      {
+        path: "login",
+        element: <Login />,
+      },
+      {
+        path: "signup",
+        element: <Signup />,
       },
     ],
   },

@@ -70,3 +70,5 @@ the error was in access point (access router) not the main router so i changed t
 1.  first go to terminal or nodejs command prompt
 2.  type node to enter node
 3.  type require("crypto").randomBytes(64).toString("hex") to generate a random string
+
+
