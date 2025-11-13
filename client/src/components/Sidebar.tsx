@@ -26,6 +26,22 @@ const Sidebar = () => {
         </li>
         <li>
           <NavLink
+            to="customers"
+            end
+            className={({ isActive }: { isActive: boolean }) =>
+              `flex items-center gap-3 px-4 py-2 rounded-lg transition-all duration-200 ${
+                isActive
+                  ? "bg-blue-600 text-white font-semibold shadow-md"
+                  : "text-gray-400 hover:text-white hover:bg-[#2A2F36]"
+              }`
+            }
+          >
+            <UserRoundPlus className="w-4 h-4" />
+            Customers
+          </NavLink>
+        </li>
+        <li>
+          <NavLink
             to="customers/add-customer"
             className={({ isActive }: { isActive: boolean }) =>
               `flex items-center gap-3 px-4 py-2 rounded-lg transition-all duration-200 ${
@@ -37,6 +53,22 @@ const Sidebar = () => {
           >
             <UserRoundPlus className="w-4 h-4" />
             Add Customers
+          </NavLink>
+        </li>
+
+        <li>
+          <NavLink
+            to="users"
+            className={({ isActive }: { isActive: boolean }) =>
+              `flex items-center gap-3 px-4 py-2 rounded-lg transition-all duration-200 ${
+                isActive
+                  ? "bg-blue-600 text-white font-semibold shadow-md"
+                  : "text-gray-400 hover:text-white hover:bg-[#2A2F36]"
+              }`
+            }
+          >
+            <UserRoundPlus className="w-4 h-4" />
+            Users
           </NavLink>
         </li>
       </ul>

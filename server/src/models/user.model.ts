@@ -21,7 +21,11 @@ const userSchema = new Schema<IUser>({
     lowercase: true,
     validate: [validator.isEmail, "Please enter a valid email"],
   },
-  password: { type: String, required: [true, "Please enter a password"] },
+  password: {
+    type: String,
+    required: [true, "Please enter a password"],
+    minlength: 6,
+  },
   role: { type: String, default: "user" },
 });
 

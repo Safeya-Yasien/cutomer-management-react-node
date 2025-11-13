@@ -71,4 +71,9 @@ the error was in access point (access router) not the main router so i changed t
 2.  type node to enter node
 3.  type require("crypto").randomBytes(64).toString("hex") to generate a random string
 
+# how to save JWT in postman every time you login by dynamic way as variable
 
+1. go to login request
+2. open script tab
+3. type pm.collectionVariables.set('JWT', pm.response.json().data.token)
+4. save then login again you will find the token saved in postman JWT variable
