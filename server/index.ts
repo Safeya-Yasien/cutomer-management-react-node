@@ -29,9 +29,9 @@ app.use(cors(corsOptions));
 app.use("/api/customers", customerRoutes);
 app.use("/api/users", userRoutes);
 
-// const port = process.env.PORT || 3000;
-// app.listen(port, () => {
-//   console.log(`http://localhost:${port}`);
-// });
+const port = process.env.PORT || 3000;
+app.listen(port, () => {
+  console.log(`http://localhost:${port}`);
+});
 
-export default app;
+// export default app;
