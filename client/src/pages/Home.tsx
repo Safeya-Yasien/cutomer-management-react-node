@@ -3,8 +3,11 @@ import { useQuery } from "@tanstack/react-query";
 const BASE_URL = import.meta.env.VITE_API_URL;
 
 const Home = () => {
+  const token = localStorage.getItem("token");
+
   const { data: usersData, isLoading: usersLoading } = useQuery({
     queryKey: ["users"],
+    enabled: !!token,
     queryFn: async () => {
       const token = localStorage.getItem("token");
       const res = await fetch(`${BASE_URL}/users`, {
@@ -19,6 +22,7 @@ const Home = () => {
 
   const { data: customersData, isLoading: customersLoading } = useQuery({
     queryKey: ["customers"],
+    enabled: !!token,
     queryFn: async () => {
       const token = localStorage.getItem("JWT");
       const res = await fetch(`${BASE_URL}/customers`, {
@@ -28,6 +32,10 @@ const Home = () => {
       return json.data;
     },
   });
+
+  if (!token) {
+    return null;
+  }
 
   if (usersLoading || customersLoading)
     return (
